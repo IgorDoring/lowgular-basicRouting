@@ -23,4 +23,8 @@ export class ListService {
   getAllUserCarts(userId: number){
     return this.http.get<Cart[]>("https://fakestoreapi.com/carts/user/"+userId)
   }
+
+  editUser(user: User){
+    return this.http.put("https://fakestoreapi.com/users/"+user.id, user)
+  }
 }

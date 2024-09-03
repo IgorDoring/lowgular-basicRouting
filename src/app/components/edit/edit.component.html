@@ -1,0 +1,59 @@
+<section>
+  <h1>Edit</h1>
+  @if(user$ | async; as user){
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        required
+        email
+        [(ngModel)]="userForm.email"
+        [value]="user.email"
+        id="email"
+        name="email"
+        type="text"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        required
+        [(ngModel)]="userForm.username"
+        [value]="user.username"
+        id="username"
+        name="username"
+        type="text"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="firstname" class="form-label">First Name</label>
+      <input
+        required
+        [(ngModel)]="userForm.name.firstname"
+        [value]="user.name.firstname"
+        id="firstname"
+        name="firstname"
+        type="text"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="lastname" class="form-label">Last Name</label>
+      <input
+        required
+        [(ngModel)]="userForm.name.lastname"
+        [value]="user.name.lastname"
+        id="lastname"
+        name="lastname"
+        type="text"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+    </div>
+  </form>
+  }
+</section>
