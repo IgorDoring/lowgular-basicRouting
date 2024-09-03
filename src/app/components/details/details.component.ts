@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../../model/user';
-import { Observable, of } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import { ListService } from '../../services/list.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,11 +18,12 @@ import { Cart } from '../../model/cart';
 export class DetailsComponent {
   user$!: Observable<User>;
   userCarts$!: Observable<Cart[]>
+  userDetails$!: Observable<{user: User, cart: Cart[]}>
 
   constructor(private listService: ListService) {}
 
   @Input() set id(userId: number) {
-    this.user$ = this.listService.getUser(userId);
-    this.userCarts$ = this.listService.getAllUserCarts(userId)
+    this.userDetails$ = forkJoin({user: this.listService.getUser(userId), cart: this.listService.getAllUserCarts(userId)})
+
   }
 }
