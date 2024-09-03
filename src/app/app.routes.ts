@@ -16,14 +16,12 @@ export const routes: Routes = [
     },
     {
         path: 'detail/:id',
+        title: 'User Details',
         component: DetailsComponent
     },
     {
         path: 'edit/:id',
+        title: "Edit User",
         component: EditComponent
-    },
-    {
-        path: '**',
-        redirectTo: 'list'
     }
 ];
