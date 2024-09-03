@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,6 @@ export class ListService {
   constructor() { }
 
   getAllUsers(){
-    return this.http.get<any[]>("https://fakestoreapi.com/users")
+    return this.http.get<User[]>("https://fakestoreapi.com/users")
   }
 }
