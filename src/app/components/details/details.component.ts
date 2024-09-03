@@ -16,14 +16,14 @@ import { Cart } from '../../model/cart';
   styleUrl: './details.component.scss',
 })
 export class DetailsComponent {
-  user$!: Observable<User>;
-  userCarts$!: Observable<Cart[]>
-  userDetails$!: Observable<{user: User, cart: Cart[]}>
+  userDetails$!: Observable<{ user: User; cart: Cart[] }>;
 
   constructor(private listService: ListService) {}
 
   @Input() set id(userId: number) {
-    this.userDetails$ = forkJoin({user: this.listService.getUser(userId), cart: this.listService.getAllUserCarts(userId)})
-
+    this.userDetails$ = forkJoin({
+      user: this.listService.getUser(userId),
+      cart: this.listService.getAllUserCarts(userId),
+    });
   }
 }
